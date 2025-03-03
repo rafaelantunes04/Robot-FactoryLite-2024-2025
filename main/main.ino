@@ -42,15 +42,6 @@ struct Roda {
     vel = newVel;
     analogWrite(PWM, newVel);
   }
-
-  void lerp(int velDest, int taxaMud) {
-    while (vel != velDest) {
-      move(vel + (velDest - vel) * taxaMud);
-      vel = vel + (velDest - vel) * taxaMud;
-      delay(1000* taxaMud);
-    }
-    
-  }
 };
 
 
@@ -94,14 +85,4 @@ void loop() {
   motorC.move(255);
   //Tras Direita
   motorD.move(-255);
-
-  //Frente Esquerda
-  motorA.move(255);
-  //Frente Direita
-  motorB.move(-255);
-  //Tras Esquerda
-  motorC.move(255);
-  //Tras Direita
-  motorD.move(-255);
-
 }
