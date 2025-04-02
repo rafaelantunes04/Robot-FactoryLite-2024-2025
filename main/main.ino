@@ -58,6 +58,13 @@ struct Carro {
     trasDireita = tDir;
   }
 
+  void parar() {
+    frenteEsquerda.move(0);
+    frenteDireita.move(0);
+    trasDireita.move(0);
+    trasEsquerda.move(0);
+  }
+
   void frente(int vel) {
     frenteEsquerda.move(vel);
     frenteDireita.move(vel);
@@ -99,24 +106,32 @@ Carro carro;
 void setup() {
   //          IN1/IN2/PWM
   //Frente Esquerda
-  motorA.init(15, 19, 4);
+  motorA.init(15, 2, 4);
   //Frente Direita
   motorB.init(16, 17, 5);
   //Tras Esquerda
-  motorC.init(18, 2, 1);
+  motorC.init(27, 26, 25);
   //Tras Direita
-  motorD.init(21, 3, 22);
+  motorD.init(13, 12, 14);
 
   carro.init(motorA, motorB, motorC, motorD);
 }
 
 void loop() {
-  carro.frente(255);
+  carro.frente(200);
   delay(2000);
-  carro.tras(255);
+  carro.parar();
   delay(2000);
-  carro.direita(255);
+  carro.tras(200);
   delay(2000);
-  carro.esquerda(128);
+  carro.parar();
+  delay(2000);
+  carro.direita(200);
+  delay(2000);
+  carro.parar();
+  delay(2000);
+  carro.esquerda(200);
+  delay(2000);
+  carro.parar();
   delay(2000);
 }

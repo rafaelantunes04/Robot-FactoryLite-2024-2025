@@ -125,13 +125,8 @@ void setup() {
   Serial.begin(9600);
 }
 
-uint8_t main_trigger = 0;
-
 void loop() {
-  if (main_trigger == 0) {
-    main();
-    main_trigger = 1;
-  }
+  main();
 }
 
 int main() {
